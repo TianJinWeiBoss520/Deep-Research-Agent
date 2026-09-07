@@ -1,0 +1,67 @@
+stages:
+  prod:
+    cognition:
+      openai:
+        # Credentials are read from environment variables. Never commit real keys.
+        # Required: OPENAI_API_KEY
+        # Optional for an OpenAI-compatible endpoint: OPENAI_API_BASE
+        default_model: gpt-5.4-mini
+        temperature: 0
+        timeout_seconds: 600
+        models:
+          gpt-5.4-mini:
+            max_tokens: 128000
+    search:
+      backend: tavily
+      tavily:
+        # Credential is read from the TAVILY_API_KEY environment variable.
+        max_results: 3
+        topic: general
+        include_raw_content: true
+        timeout_seconds: 300
+    roles:
+      supervisor:
+        backend: openai
+        handle: gpt-5.4-nano 
+        max_tokens: 128000
+        timeout_seconds: 600
+      red_team:
+        backend: openai
+        handle: gpt-5.4-mini 
+        max_tokens: 128000
+        timeout_seconds: 600
+      context_pruner:
+        backend: openai
+        handle: gpt-5.4-nano 
+        max_tokens: 128000
+        timeout_seconds: 600
+      researcher_main:
+        backend: openai
+        handle: gpt-5.4-nano
+        max_tokens: 128000
+        timeout_seconds: 600
+      researcher_summarizer:
+        backend: openai
+        handle: gpt-5.4-nano
+        max_tokens: 128000
+        timeout_seconds: 600
+      researcher_compressor:
+        backend: openai
+        handle: gpt-5.4-nano
+        max_tokens: 128000
+        timeout_seconds: 600
+      writer:
+        backend: openai
+        handle: gpt-5.4-nano
+        max_tokens: 128000
+        timeout_seconds: 600
+      draft:
+        backend: openai
+        handle: gpt-5.4-nano 
+        max_tokens: 128000
+        timeout_seconds: 600
+      evaluator:
+        backend: openai
+        handle: gpt-5.4-nano 
+        max_tokens: 128000
+        timeout_seconds: 600
