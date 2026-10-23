@@ -1,5 +1,9 @@
 # Deep Research Agent
 
+<p align="center">
+  <img src="assets/deep-research-agent-architecture.png" alt="Deep Research Agent multi-agent architecture" width="1200">
+</p>
+
 A hierarchical multi-agent research system built with LangGraph. It decomposes open-ended questions, coordinates parallel web research, iteratively improves a draft, evaluates report quality, and produces a structured Markdown report with citations.
 
 ## Architecture
